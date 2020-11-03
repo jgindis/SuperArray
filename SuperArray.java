@@ -18,4 +18,11 @@ public class SuperArray {
     return true;
   }
 
+  public String set(int index, String element) {
+     String old = data[index];
+     data[index] = element;
+     return SuperArray();
+   }
+ }
+
 }
