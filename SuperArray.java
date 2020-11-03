@@ -23,6 +23,14 @@ public class SuperArray {
      data[index] = element;
      return SuperArray();
    }
+
+   private void resize() {
+     String[] newData = new String[20];
+     for (int i = 0; i < data.length; i++) {
+       newData[i] = data[i];
+     }
+     data = bigdata;
+   }
  }
 
 }
