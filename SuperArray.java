@@ -7,4 +7,8 @@ public class SuperArray {
 
   }
 
+  public int size() {
+    return size;
+  }
+
 }
