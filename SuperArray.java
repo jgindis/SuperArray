@@ -4,7 +4,8 @@ public class SuperArray {
   private int size; //The current size
 
   public SuperArray() {
-
+    data = new String[10];
+    size = 0;
   }
 
   public int size() {
@@ -12,7 +13,7 @@ public class SuperArray {
   }
 
   public boolean add(String element) {
-    if (size==10) resize();
+    if (size==data.length) resize();
     data[size] = element;
     size++;
     return true;
@@ -21,16 +22,13 @@ public class SuperArray {
   public String set(int index, String element) {
      String old = data[index];
      data[index] = element;
-     return SuperArray();
+     return old;
    }
 
    private void resize() {
-     String[] newData = new String[20];
-     for (int i = 0; i < data.length; i++) {
-       newData[i] = data[i];
-     }
+     String[] bigdata = new String[size+10];
+     for (int i=0; i<data.length; i++) bigdata[i] = data[i];
      data = bigdata;
    }
- }
 
 }
