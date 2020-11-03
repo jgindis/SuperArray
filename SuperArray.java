@@ -11,4 +11,11 @@ public class SuperArray {
     return size;
   }
 
+  public boolean add(String element) {
+    if (size==10) resize();
+    data[size] = element;
+    size++;
+    return true;
+  }
+
 }
