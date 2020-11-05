@@ -36,8 +36,7 @@ public class SuperArray {
    }
 
    public boolean isEmpty() {
-     if (data.length == 0) return true;
-     else return false;
+     return (size == 0);
    }
 
    public void clear() {
@@ -47,7 +46,15 @@ public class SuperArray {
    }
 
    public String toString() {
-     return "";
+     String array = "[";
+     if (size == 0) array += "]";
+     for (int i = 0; i < size; i++) {
+       if (i == size - 1) {
+         array+=String.valueOf(data[i])+"]";
+       }
+       else array+=String.valueOf(data[i])+", ";
+     }
+     return array;
    }
 
    public boolean contains(String s) {
@@ -61,5 +68,44 @@ public class SuperArray {
      }
      return false;
    }
+
+   public void add(int index, String element) {
+       if (size == data.length) resize();
+       for (int i=size-1; i>=index; i--) {
+         String store = data[i];
+         data[i+1] = store;
+       }
+       data[index] = element;
+       size++;
+     }
+
+     public String remove(int index) {
+       String var = data[index];
+       for (int i = index; i < size-1; i++) {
+         data[i] = data[i+1];
+       }
+       size -= 1;
+       return var;
+     }
+
+     public int indexOf(String s) {
+       boolean isthere = false;
+       int no = -1;
+       for (int i=0; i<size; i++) {
+           if (isthere == false && data[i].equals(s)) {
+             isthere = true;
+             no = i;
+           }
+         }
+         return no;
+       }
+
+       public String[] toArray() {
+         String[] arr = new String[size];
+         for (int i=0; i<size; i++) {
+           arr[i] = data[i];
+         }
+         return arr;
+       }
 
 }
