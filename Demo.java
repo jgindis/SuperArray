@@ -27,6 +27,25 @@ public class Demo {
     }
   }
 
+  public static SuperArray zip(SuperArray a, SuperArray b) {
+    SuperArray c = new SuperArray();
+    if (a.size() >= b.size()) {
+      int max = a.size();
+      int min = b.size();
+    } else {
+      int max = min;
+      int min = a.size();
+    }
+      for (int i = 0; i < min; i++) {
+        c.add(a.get(i));
+        c.add(b.get(i));
+      }
+      for (int i = min; i < max; i++) {
+        c.add(a.get(i));
+      }
+    return c;
+  }
+
   public static void main(String[]args){
     SuperArray words = new SuperArray();
     //grouped to save vertical space
