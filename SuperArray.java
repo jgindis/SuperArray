@@ -135,7 +135,7 @@ public class SuperArray {
        public boolean equals(SuperArray other) {
          if (size == other.size()) {
            for (int i = 0; i < size; i++) {
-             if !(data[i].equals(other.get(i))) return false;
+             if (!(data[i].equals(other.get(i)))) return false;
            }
          }
          return true;
