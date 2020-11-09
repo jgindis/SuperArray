@@ -1,9 +1,9 @@
 public class Demo {
 
   public static void removeDuplicates(SuperArray s) {
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < SuperArray.size; i++) {
       String cur = data[i];
-      for (int j = i + 1; j < size-i; j++) {
+      for (int j = i + 1; j < SuperArray.size-i; j++) {
         if (data[j].equals(cur)) {
           remove(j);
           i--;
@@ -18,10 +18,10 @@ public class Demo {
     SuperArray c = new SuperArray(min);
  		for (int i = 0; i < max; i++) {
  			if (a.size() > i && b.contains(a.get(i))) {
-        if !(c.contains(a.get(i))) c.add(a.get(i));
+        if (!(c.contains(a.get(i)))) c.add(a.get(i));
       }
- 			if (b.size() > i && a.contains(b.get(i)) {
-        if !(c.contains(b.get(i))) c.add(b.get(i));
+ 			if (b.size() > i && a.contains(b.get(i))) {
+        if (!(c.contains(b.get(i)))) c.add(b.get(i));
  		  }
  		return c;
     }
@@ -33,7 +33,7 @@ public class Demo {
       int max = a.size();
       int min = b.size();
     } else {
-      int max = min;
+      int max = b.size();
       int min = a.size();
     }
       for (int i = 0; i < min; i++) {
