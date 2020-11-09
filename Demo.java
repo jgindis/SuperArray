@@ -3,10 +3,11 @@ public class Demo {
   public static void removeDuplicates(SuperArray s) {
     for (int i = 0; i < s.size(); i++) {
       String cur = s.get(i);
-      for (int j = i + 1; j < s.size()-i; j++) {
+      for (int j = i+1; j < s.size()-i; j++) {
         if (s.get(j).equals(cur)) {
           s.remove(j);
           i--;
+          j--;
         }
       }
     }
