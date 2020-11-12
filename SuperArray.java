@@ -3,7 +3,12 @@ public class SuperArray {
   private String [] data;
   private int size; //The current size
 
-  public SuperArray() {
+  public SuperArray(int initialCapacity) {
+    if (initialCapacity < 0) {
+    throw new IllegalArgumentException("Initial capacity = "
+                                      + initialCapacity
+                                      + ", should be negative");
+    }
     data = new String[10];
     size = 0;
   }
@@ -20,20 +25,32 @@ public class SuperArray {
   }
 
   public String get(int index) {
-      return data[index];
+    if (index < 0 || index >= size) {
+      throw new IndexOutOfBoundsException("Index "
+                                          + index
+                                          + " out of bounds of size "
+                                          + size);
     }
+    return data[index];
+  }
 
   public String set(int index, String element) {
-     String old = data[index];
-     data[index] = element;
-     return old;
-   }
+    if (index < 0 || index >= size) {
+      throw new IndexOutOfBoundsException("Index "
+                                          + index
+                                          + " out of bounds of size "
+                                          + size);
+    }
+    String old = data[index];
+    data[index] = element;
+    return old;
+  }
 
-   private void resize() {
-     String[] bigdata = new String[size*2];
-     for (int i = 0; i < data.length; i++) bigdata[i] = data[i];
-     data = bigdata;
-   }
+  private void resize() {
+    String[] bigdata = new String[size*2];
+    for (int i = 0; i < data.length; i++) bigdata[i] = data[i];
+    data = bigdata;
+  }
 
    public boolean isEmpty() {
      return (size == 0);
@@ -69,17 +86,29 @@ public class SuperArray {
      return false;
    }
 
-   public void add(int index, String element) {
-       if (size == data.length) resize();
-       for (int i = size-1; i >= index; i--) {
-         String store = data[i];
-         data[i+1] = store;
-       }
-       data[index] = element;
-       size++;
-     }
+  public void add(int index, String element) {
+    if (index < 0 || index >= size) {
+      throw new IndexOutOfBoundsException("Index "
+                                          + index
+                                          + " out of bounds of size "
+                                          + size);
+    }
+    if (size == data.length) resize();
+    for (int i = size-1; i >= index; i--) {
+      String store = data[i];
+      data[i+1] = store;
+    }
+    data[index] = element;
+    size++;
+  }
 
      public String remove(int index) {
+       if (index < 0 || index >= size) {
+         throw new IndexOutOfBoundsException("Index "
+                                             + index
+                                             + " out of bounds of size "
+                                             + size);
+       }  
        String var = data[index];
        for (int i = index; i < size-1; i++) {
          data[i] = data[i+1];
