@@ -9,6 +9,11 @@ public class SuperArray {
                                       + initialCapacity
                                       + ", should be negative");
     }
+    data = new String[initialCapacity];
+    size = 0;
+  }
+
+  public SuperArray() {
     data = new String[10];
     size = 0;
   }
@@ -57,10 +62,9 @@ public class SuperArray {
    }
 
    public void clear() {
-     for (int i = 0; i < size; i++) {
-       data[i] = "";
-     }
-   }
+     for (int i = 0; i < data.length; i++) data[i] = null;
+     size = 0;
+  }
 
    public String toString() {
      String array = "[";
@@ -87,7 +91,7 @@ public class SuperArray {
    }
 
   public void add(int index, String element) {
-    if (index < 0 || index >= size) {
+    if (index < 0 || index > size()) {
       throw new IndexOutOfBoundsException("Index "
                                           + index
                                           + " out of bounds of size "
@@ -108,7 +112,7 @@ public class SuperArray {
                                              + index
                                              + " out of bounds of size "
                                              + size);
-       }  
+       }
        String var = data[index];
        for (int i = index; i < size-1; i++) {
          data[i] = data[i+1];
